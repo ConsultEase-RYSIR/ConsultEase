@@ -45,7 +45,8 @@ export function validateSummary(raw: any, consultStart: Date, send: boolean, now
     let id: string | undefined;
     if (r.id != null) {
       if (typeof r.id !== "string" || r.id.length > 40 || seen.has(r.id)) return { ok: false, error: `Revision ${i + 1} is not valid.` };
-      id = r.id; seen.add(id);
+      id = r.id as string; 
+      seen.add(id);
     }
     let dueDate: Date | null = null;
     if (r.due != null && r.due !== "") {
